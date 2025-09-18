@@ -1,16 +1,16 @@
-# Use lightweight Python image
 FROM python:3.11-alpine
 
-# Set working directory
 WORKDIR /app
+
+# Install dos2unix for line ending conversion
+RUN apk add --no-cache bash dos2unix
 
 # Copy project files
 COPY . .
 
-# Convert script to Unix line endings and make it executable
-RUN apk add --no-cache dos2unix bash \
-    && dos2unix wisecow.sh \
-    && chmod +x wisecow.sh
+# Convert line endings and make script executable
+RUN dos2unix wisecow.sh
+RUN chmod +x wisecow.sh
 
 # Expose port
 EXPOSE 4499
