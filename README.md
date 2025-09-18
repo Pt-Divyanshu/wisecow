@@ -21,3 +21,4 @@ Wisecow is a sample application that we containerize using Docker and deploy on 
 2. Run locally: `docker run -p 3000:3000 wisecow:latest`
 3. Deploy to Kubernetes: `kubectl apply -f deployment.yaml && kubectl apply -f service.yaml`
 4. Access app: `http://<minikube-ip>:32000`
+Trigger CI/CD workflow
