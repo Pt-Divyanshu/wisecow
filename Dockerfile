@@ -1,17 +1,17 @@
-# Use lightweight Python Alpine image
+# Use a lightweight Python image
 FROM python:3.11-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy project files
+# Copy all files
 COPY . .
 
-# Make wisecow.sh executable
+# Make script executable
 RUN chmod +x wisecow.sh
 
-# Expose port 3000
-EXPOSE 3000
+# Expose the port
+EXPOSE 4499
 
 # Run the app
 CMD ["./wisecow.sh"]
