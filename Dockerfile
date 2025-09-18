@@ -1,8 +1,8 @@
 # Use a lightweight Linux image
 FROM alpine:3.18
 
-# Install bash if not already present
-RUN apk add --no-cache bash
+# Install bash and dos2unix
+RUN apk add --no-cache bash dos2unix
 
 # Set working directory
 WORKDIR /app
@@ -10,11 +10,14 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
-# Make sure the script is executable
+# Convert Windows line endings to Unix line endings
+RUN dos2unix wisecow.sh
+
+# Make script executable
 RUN chmod +x wisecow.sh
 
-# Expose port the app uses (adjust if needed)
+# Expose port (adjust if your app uses a different port)
 EXPOSE 3000
 
-# Command to run the app
-CMD ["./wisecow.sh"]
+# Run the app using sh
+CMD ["sh", "./wisecow.sh"]
