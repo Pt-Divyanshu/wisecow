@@ -1,8 +1,5 @@
-# Use lightweight Linux image
-FROM alpine:3.18
-
-# Install bash, dos2unix, and python3
-RUN apk add --no-cache bash dos2unix python3 py3-pip
+# Use lightweight Python Alpine image
+FROM python:3.11-alpine
 
 # Set working directory
 WORKDIR /app
@@ -10,12 +7,11 @@ WORKDIR /app
 # Copy project files
 COPY . .
 
-# Fix line endings and permissions
-RUN dos2unix wisecow.sh
+# Make wisecow.sh executable
 RUN chmod +x wisecow.sh
 
-# Expose port
+# Expose port 3000
 EXPOSE 3000
 
 # Run the app
-CMD ["sh", "./wisecow.sh"]
+CMD ["./wisecow.sh"]
