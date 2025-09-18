@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: wisecow
-          image: yourdockerhubusername/wisecow:latest
+          image: divyanshush/wisecow:latest
           ports:
             - containerPort: 3000
